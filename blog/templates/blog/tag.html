@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    Главная
+{% endblock %}
+
+
+
+
+{% block content %}
+    <div class="card">
+        <h2>Все записи по тегу: {{ tag.name }}</h2>
+    </div>
+    {% for i in tag.post_set.all %}
+        <div class="card">
+            <h2>{{ i.name }}</h2>
+            <div class="fakeimg" style="height:200px;">ФОТО ДЛЯ СТАТЬИ</div>
+            <h5>{{ i.description|truncatewords:50 }}</h5>
+            <h4><a href="{{ i.get_url }}">ЧИТАТЬ ПОЛНОСТЬЮ</a></h4>
+
+        </div>
+    {% endfor %}
+{% endblock %}

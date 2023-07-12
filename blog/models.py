@@ -5,12 +5,13 @@ from django.core.validators import MaxValueValidator
 
 class Tag(models.Model):
     name = models.CharField(max_length=15)
+    slug = models.SlugField(default='', null=False)
 
     def __str__(self):
         return f'Модель Tag с именем {self.name}'
 
     def get_url(self):
-        return reverse('', args=[self.name])
+        return reverse('tag-detail', args=[self.slug])
 
 
 class Post(models.Model):

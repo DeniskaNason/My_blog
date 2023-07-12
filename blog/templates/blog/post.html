@@ -8,11 +8,11 @@
 {% block content %}
     <div class="card">
         <h2>{{ post.name }}</h2>
-        <h5>Теги:
+        <p>Теги:
         {% for i in post.tags.all %}
-            {{ i.name }}
+            <a href="{{ i.get_url }}">{{ i.name }}</a>
         {% endfor %}
-        </h5>
+        </p>
         <div class="fakeimg" style="height:200px;">ФОТО ДЛЯ СТАТЬИ</div>
         <h5>{{ post.description|linebreaks }}</h5>
         <h6>Рейтинг {{ post.rating }}</h6>
