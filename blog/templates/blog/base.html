@@ -5,30 +5,32 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>       <!--BLOCK TITLE -->
 
     <link rel="stylesheet" href="{% static 'blog/css/forms.css' %}">
 </head>
 <body>
 <div class="header">
-    <h2><a href=""></a>Блог Дениса Насонова</h2>
+    <h2><a href="/">Блог Дениса Насонова</a></h2>
 </div>
 
 <div class="row">
     <div class="leftcolumn">
 
-        {% block content %}
+        {% block content %}            <!--BLOCK CONTENT -->
 
         {% endblock %}
-
+    <div class="pagin">
+    {% include 'includes/pagination.html' %}               <!--INCLUDE PAGINATION -->
+    </div>
     </div>
     <div class="rightcolumn">
-        {% include 'includes/right_column.html' %}
+        {% include 'includes/right_column.html' %}         <!--INCLUDE RIGHT-COLUMN -->
     </div>
 </div>
 
 </body>
 
 <div class="footer">
-    {% include 'includes/footer.html' %}
+    {% include 'includes/footer.html' %}                   <!--INCLUDE FOOTER -->
 </div>

@@ -9,6 +9,7 @@ class Index(ListView):
     template_name = 'blog/index.html'
     model = Post
     context_object_name = 'posts'
+    paginate_by = 3
 
 
 class Post(DetailView):
