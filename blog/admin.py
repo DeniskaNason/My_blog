@@ -3,4 +3,8 @@ from .models import Tag, Post
 
 # Register your models here.
 admin.site.register(Tag)
-admin.site.register(Post)
+
+
+@admin.register(Post)
+class BlogPost(admin.ModelAdmin):
+    filter_horizontal = ['tags', ]

@@ -12,6 +12,14 @@
 <body>
 <div class="header">
     <h2><a href="/">Блог Дениса Насонова</a></h2>
+    <h4><a href="/registration">Регистрация</a> <a href="">Авторизация</a></h4>
+    {% if messages %}
+    {% for i in messages %}
+        <div class="alert">
+            {{ i }}
+        </div>
+    {% endfor %}
+{% endif %}
 </div>
 
 <div class="row">

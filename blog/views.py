@@ -10,6 +10,7 @@ class Index(ListView):
     model = Post
     context_object_name = 'posts'
     paginate_by = 3
+    ordering = ['-id']
 
 
 class Post(DetailView):
