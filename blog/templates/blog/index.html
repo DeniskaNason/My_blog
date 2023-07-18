@@ -6,14 +6,17 @@
 
 
 
-
 {% block content %}
     {% for i in posts %}
-    <div class="card">
-        <h2>{{ i.name }}</h2>
-        <div class="fakeimg" style="height:200px;">ФОТО ДЛЯ СТАТЬИ</div>
-        <h5>{{ i.description|truncatewords:50 }}</h5>
-        <h4><a href="{{ i.get_url }}">ЧИТАТЬ ПОЛНОСТЬЮ</a></h4>
-    </div>
+        <article class="blog-post">
+            <h2 class="display-5 link-body-emphasis mb-1">{{ i.name }}</h2>
+            <p class="blog-post-meta">{{ i.publication_date }}</p>
+
+            <p>{{ i.description|truncatewords:50 }}</p>
+        </article>
+        <form action="{{ i.get_url }}">
+            <button class="btn btn-outline-primary">Читать далее</button>
+        </form>
+        <p></p>
     {% endfor %}
 {% endblock %}

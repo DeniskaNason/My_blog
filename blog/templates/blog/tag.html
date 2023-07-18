@@ -4,20 +4,20 @@
     Главная
 {% endblock %}
 
-
-
-
 {% block content %}
-    <div class="card">
-        <h2>Все записи по тегу: {{ tag.name }}</h2>
-    </div>
+    <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        Все записи по тегу: {{ tag.name }}
+    </h3>
     {% for i in tag.post_set.all %}
-        <div class="card">
-            <h2>{{ i.name }}</h2>
-            <div class="fakeimg" style="height:200px;">ФОТО ДЛЯ СТАТЬИ</div>
-            <h5>{{ i.description|truncatewords:50 }}</h5>
-            <h4><a href="{{ i.get_url }}">ЧИТАТЬ ПОЛНОСТЬЮ</a></h4>
+        <article class="blog-post">
+            <h2 class="display-5 link-body-emphasis mb-1">{{ i.name }}</h2>
+            <p class="blog-post-meta">{{ i.publication_date }}</p>
 
-        </div>
+            <p>{{ i.description|truncatewords:50 }}</p>
+        </article>
+        <form action="{{ i.get_url }}">
+            <button class="btn btn-outline-primary">Читать далее</button>
+        </form>
+        <p></p>
     {% endfor %}
 {% endblock %}

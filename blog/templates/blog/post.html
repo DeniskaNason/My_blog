@@ -2,19 +2,17 @@
 
 {% block title %} НАЗВАНИЕ СТАТЬИ {% endblock %}
 
-
-
-
 {% block content %}
-    <div class="card">
-        <h2>{{ post.name }}</h2>
-        <p>Теги:
-        {% for i in post.tags.all %}
-            <a href="{{ i.get_url }}">{{ i.name }}</a>
-        {% endfor %}
+    <article class="blog-post">
+        <h2 class="display-5 link-body-emphasis mb-1">{{ post.name }}</h2>
+        <p class="blog-post-meta">Теги:
+            {% for i in post.tags.all %}
+                <a href="{{ i.get_url }}">{{ i.name }}</a>
+            {% endfor %}
         </p>
-        <div class="fakeimg" style="height:200px;">ФОТО ДЛЯ СТАТЬИ</div>
-        <h5>{{ post.description|linebreaks }}</h5>
-        <h6>Рейтинг {{ post.rating }}</h6>
-    </div>
+
+        <p>{{ post.description|linebreaks }}</p>
+        <p>Рейтинг: {{ post.rating }} СДЕЛАТЬ КНОПКУ</p>
+
+    </article>
 {% endblock %}

@@ -1,19 +1,19 @@
 {% if is_paginated %}
     {% if page_obj.has_previous %}
-        <a href="/" class="button">Начало</a>
-        <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+        <a class="btn btn-outline-primary" <a href="/">Начало</a>
+        <a class="btn btn-outline-primary" <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
     {% endif %}
 
     {% for i in page_obj.paginator.page_range %}
         {% if i == page_obj.number %}
-            <button>{{ i }}</button>
+            <a class="btn btn-outline-secondary disabled">{{ i }}</a>
         {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
-            <a href="?page={{ i }}">{{ i }}</a>
+            <a class="btn btn-outline-primary " href="?page={{ i }}">{{ i }}</a>
         {% endif %}
     {% endfor %}
 
     {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Последняя</a>
+        <a class="btn btn-outline-primary" href="?page={{ page_obj.next_page_number }}">Следующая</a>
+        <a class="btn btn-outline-primary" href="?page={{ page_obj.paginator.num_pages }}">Последняя</a>
     {% endif %}
 {% endif %}
