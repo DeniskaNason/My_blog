@@ -9,10 +9,12 @@
             {% for i in post.tags.all %}
                 <a href="{{ i.get_url }}">{{ i.name }}</a>
             {% endfor %}
+
+        <p class="blog-post-meta">{{ post.publication_date }} от <a href="#">{{ post.author }}</a></p>
         </p>
 
         <p>{{ post.description|linebreaks }}</p>
-        <p>Рейтинг: {{ post.rating }} СДЕЛАТЬ КНОПКУ</p>
+        <p class="btn btn-secondary rounded-pill px-3">Рейтинг статьи: {{ post.rating }}</p>
 
     </article>
 {% endblock %}

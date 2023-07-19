@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
-from django.core.validators import MaxValueValidator
+from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Tag(models.Model):
@@ -24,7 +25,8 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, verbose_name='Теги')
     rating = models.PositiveIntegerField(default=1, verbose_name='Рейтинг')
     slug = models.SlugField(default='', null=False, verbose_name='SLUG')
-    publication_date = models.DateTimeField(auto_now=True, verbose_name='Дата публикации')
+    publication_date = models.DateTimeField(default=timezone.now, verbose_name='Дата публикации')
+    author = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Автор статьи')
 
     def __str__(self):
         return f'Модель "Post" с именем "{self.name}"'
