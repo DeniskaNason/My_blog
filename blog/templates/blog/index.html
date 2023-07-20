@@ -10,7 +10,7 @@
     {% for i in posts %}
         <article class="blog-post">
             <h2 class="display-5 link-body-emphasis mb-1">{{ i.name }}</h2>
-            <p class="blog-post-meta">{{ i.publication_date }} от <a href="#">{{ i.author }}</a></p>
+            <p class="blog-post-meta">{{ i.publication_date }} от <a href="{% url 'profile' %}{{ i.author.username }}">{{ i.author }}</a></p>
 
             <p>{{ i.description|truncatewords:50 }}</p>
         </article>

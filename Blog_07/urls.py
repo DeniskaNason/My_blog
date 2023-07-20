@@ -18,12 +18,18 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as authViews
 from registration import views as RegViews
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('blog.urls')),
     path('admin/', admin.site.urls),
     path('registration/', RegViews.registration, name='registration'),
     path('profile/', RegViews.profile, name='profile'),
+    path('profile/<slug:username>', RegViews.ProfileUser.as_view(), name='profile_user'),
     path('login/', authViews.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('exit/', authViews.LogoutView.as_view(template_name='registration/exit.html'), name='exit'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

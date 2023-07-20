@@ -1,15 +1,13 @@
 {% extends 'blog/base.html' %}
-{% load crispy_forms_tags %}
 
 {% block title %}
-    Личный кабинет
+    Профиль пользователя
 {% endblock %}
 
 
 
 
 {% block content %}
-    {% csrf_token %}
     <body classname="snippet-body">
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
@@ -18,22 +16,28 @@
                                                                                              width="100px"
                                                                                              height="100px"
                                                                                              src="{{ user.profile.img.url }}">
-                    <span class="font-weight-bold">{{ user.username }}</span>
-                    <span class="text-black-50">{{ user.email }}</span>
+                    <span class="font-weight-bold">@{{ user.username }}</span>
                 </div>
             </div>
 
+            <div class="col-md-7 border-right">
+                <div class="p-5 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Данные пользователя</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels"><b>Имя: </b>{{ user.first_name }}</label></div>
+                        <div class="col-md-6"><label class="labels"><b>Фамилия: </b>{{ user.last_name }}</label></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels"><b>Электронная почта: </b>{{ user.email }}</label></div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-9 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Настройки профиля</h4>
                     </div>
-                    <form method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ update_user|crispy }}
-                        {{ update_profile|crispy }}
-                        <button type="submit" class="btn btn-outline-primary">Обновить данные</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -58,5 +62,7 @@
     </body>
     <br><br><br><br><br><br><br><br><br><br>
 {% endblock %}
+
+
 
 

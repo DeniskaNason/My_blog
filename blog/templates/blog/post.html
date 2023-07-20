@@ -10,7 +10,7 @@
                 <a href="{{ i.get_url }}">{{ i.name }}</a>
             {% endfor %}
 
-        <p class="blog-post-meta">{{ post.publication_date }} от <a href="#">{{ post.author }}</a></p>
+        <p class="blog-post-meta">{{ post.publication_date }} от <a href="{% url 'profile' %}{{ post.author.username}}">{{ post.author }}</a></p>
         </p>
 
         <p>{{ post.description|linebreaks }}</p>
